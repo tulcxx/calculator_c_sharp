@@ -13,8 +13,8 @@ namespace calc
     public partial class Form1 : Form
     {
         string flag;
-        int chislo1;
-        int chislo2;
+        double chislo1;
+        double chislo2;
         public Form1()
         {
             
@@ -178,7 +178,7 @@ namespace calc
         private void button28_Click(object sender, EventArgs e)
         {
             flag = "+";
-            chislo1 = Convert.ToInt32(textBox1.Text);
+            chislo1 = Convert.ToDouble(textBox1.Text);
             textBox1.Text = "";
             
             
@@ -188,36 +188,105 @@ namespace calc
         private void button25_Click(object sender, EventArgs e)
         {
             flag = "-";
-            chislo1 = Convert.ToInt32(textBox1.Text);
+            chislo1 = Convert.ToDouble(textBox1.Text);
             textBox1.Text = "";
         }
         //множення
         private void button20_Click(object sender, EventArgs e)
         {
             flag = "*";
-            chislo1 = Convert.ToInt32(textBox1.Text);
+            chislo1 = Convert.ToDouble(textBox1.Text);
             textBox1.Text = "";
+        }
+        //Деление
+        private void button15_Click(object sender, EventArgs e)
+        {
+            flag = "/";
+            chislo1 = Convert.ToDouble(textBox1.Text);
+            textBox1.Text = "";
+        }
+        //плюсминус
+        private void button10_Click(object sender, EventArgs e)
+        {
+            chislo1 = Convert.ToDouble(textBox1.Text);
+            textBox1.Text = chislo1*-1 + "";
+        }
+        //1/x
+        private void button21_Click(object sender, EventArgs e)
+        {
+            chislo1 = Convert.ToDouble(textBox1.Text);
+            double x = chislo1;
+            textBox1.Text = (1/x) + "";
+        }
+        //%
+        private void button16_Click(object sender, EventArgs e)
+        {
+            chislo1 = Convert.ToDouble(textBox1.Text);
+            double x = chislo1;
+            textBox1.Text = x / 100+"";
+        }
+        //C
+        private void button9_Click(object sender, EventArgs e)
+        {
+            chislo1 = 0;
+            textBox1.Text = "0";
+        }
+        //CE
+        private void button8_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "0";
+        }
+        //backspace
+        private void button7_Click_1(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1);
+            if (textBox1.Text.Length<1)
+            {
+                textBox1.Text = "0";
+            }
+        }
+        //корень
+        private void button11_Click(object sender, EventArgs e)
+        {
+            chislo1 = Convert.ToDouble(textBox1.Text);
+            textBox1.Text = Math.Sqrt(chislo1)+"";
+        }
+        //запятая
+        private void button27_Click(object sender, EventArgs e)
+        {
+
+            if (!textBox1.Text.Contains(","))
+                textBox1.Text += ",";
         }
         //одно  
         private void button26_Click(object sender, EventArgs e)
         {
             if (flag =="+")
             {
-                chislo2 = Convert.ToInt32(textBox1.Text);
+                chislo2 = Convert.ToDouble(textBox1.Text);
                 textBox1.Text = chislo1 + chislo2+"";
+                flag = "";
             }
             if (flag == "-")
             {
-                chislo2 = Convert.ToInt32(textBox1.Text);
+                chislo2 = Convert.ToDouble(textBox1.Text);
                 textBox1.Text = chislo1 - chislo2 + "";
+                flag = "";
             }
             if (flag == "*")
             {
-                chislo2 = Convert.ToInt32(textBox1.Text);
+                chislo2 = Convert.ToDouble(textBox1.Text);
                 textBox1.Text = chislo1 * chislo2 + "";
+                flag = "";
+            }
+            if (flag == "/")
+            {
+                chislo2 = Convert.ToDouble(textBox1.Text);
+                textBox1.Text = chislo1 / chislo2 + "";
+                flag = "";
             }
         }
 
-       
+        
     }
 }
